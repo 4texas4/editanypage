@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Tool Bookmarklet</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 0.2em;
+  }
+
+  p.subtext {
+    font-size: 1em;
+    color: #555;
+    margin: 0.2em 0 1em 0;
+  }
+
+  a.bookmarklet {
+    display: inline-block;
+    padding: 20px 40px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background: #ff0000; /* bright red */
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    cursor: default; /* looks non-clickable */
+    user-select: none;
+    margin-bottom: 12px;
+  }
+
+  .drag-instruction {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>Edit Your Grades</h1>
+<p class="subtext">
+Once in your bookmarks, click it on a page to edit the text. Then the button will be there.<br>
+This does not work on a school account. You must go to a home account and visit <a href="https://powerschool.ccsdut.org/public/" target="_blank">https://powerschool.ccsdut.org/public/</a>.
+</p>
+
+<a class="bookmarklet" href="javascript:(function(){try{var t=document.body||document.documentElement;var editing=!!t.isContentEditable;editing=!editing;t.contentEditable=editing?%27true%27:%27false%27;document.designMode=editing?%27on%27:%27off%27;var id=%27editToggleIndicator_v1%27;var old=document.getElementById(id);if(old){try{old.parentNode.removeChild(old);}catch(e){}}var msg=document.createElement(%27div%27);msg.id=id;msg.textContent=editing?%27ON%27:%27OFF%27;msg.style.cssText=%27position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:96px;font-weight:900;font-family:sans-serif;color:%27+(editing?%27limegreen%27:%27red%27)+%27;background:white;padding:24px 48px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.35);z-index:2147483647;opacity:1;transition:opacity .6s ease;pointer-events:none;%27;(document.documentElement||document.body).appendChild(msg);setTimeout(function(){msg.style.opacity=%270%27;setTimeout(function(){try{msg.parentNode.removeChild(msg);}catch(e){}},600);},2000);}catch(e){try{alert(%27Edit toggle failed:%27+e);}catch(ignore){}}})();void 0">Edit Tool</a>
+
+<div class="drag-instruction">Drag The Red Button To Your Bookmarks</div>
+
+</body>
+</html>
